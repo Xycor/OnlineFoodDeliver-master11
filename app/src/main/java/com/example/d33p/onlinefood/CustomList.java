@@ -93,14 +93,14 @@ public class CustomList extends BaseAdapter{
                 @Override
                 public void onClick(View v) {
 
-                    sb.append(((Retro)getItem(position)).getItem());
-                    sb.append(",");
+                    //sb.append(((Retro)getItem(position)).getItem());
+                    //sb.append(",");
 
-                    edit.putString("id",sb.toString()).apply();
+                    //edit.putString("id",sb.toString()).apply();
                     //sp.edit().putString("id",((Retro)getItem(position)).getItem()).apply();
                     //Toast.makeText(mContext,getItem(position).toString(),Toast.LENGTH_LONG).show();
-                    String s=sp.getString("id","");
-                    Toast.makeText(mContext.getApplicationContext(),s,Toast.LENGTH_LONG).show();
+                    //String s=sp.getString("id","");
+                    //Toast.makeText(mContext.getApplicationContext(),s,Toast.LENGTH_LONG).show();
                     iid=((Retro) getItem(position)).getId();
                     iitem=((Retro) getItem(position)).getItem();
                     if(timeint>6 && timeint<10)
