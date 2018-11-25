@@ -1,12 +1,19 @@
 package com.example.d33p.onlinefood;
 
 public class Cartitems {
-    String id,item,variant,inventory,price;
+    private String id,item,variant,inventory,price,track,deliver;
 
     public Cartitems(String item, String variant, String price) {
         this.item = item;
         this.variant = variant;
         this.price = price;
+    }
+    public Cartitems(String item, String variant, String price, String track, String deliver) {
+        this.item = item;
+        this.variant = variant;
+        this.price = price;
+        this.track=track;
+        this.deliver=deliver;
     }
 
     public String getId() {
@@ -47,5 +54,21 @@ public class Cartitems {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getTrack() {
+        return track;
+    }
+
+    public void setTrack(String track) {
+        this.track = track;
+    }
+
+    public String getDeliver() {
+        return deliver;
+    }
+
+    public void setDeliver(String deliver) {
+        this.deliver = deliver;
     }
 }

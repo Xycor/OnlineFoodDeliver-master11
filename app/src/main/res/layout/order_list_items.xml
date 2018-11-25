@@ -8,8 +8,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="107dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="55dp"
         android:padding="2dp"
         android:text="Medium Text"
         android:textColor="#4d4d4d"
@@ -21,31 +21,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="57dp"
         android:text="@string/textview"
-        android:textSize="18sp"
-        android:textStyle="bold"/>
-
-    <CheckBox
-        android:id="@+id/cod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/itemname"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="175dp"
-        android:text="@string/nexr_day_delivery_cod" />
-
-    <Button
-        android:id="@+id/place"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/price"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="15dp"
-        android:text="@string/place_order" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/variant"
@@ -54,17 +34,35 @@
         android:layout_alignTop="@+id/itemname"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="97dp"
+        android:layout_marginEnd="37dp"
         android:text="@string/variant"
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/track"
+        android:id="@+id/timee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/itemname"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="55dp"
-        android:text="@string/track"/>
+        android:layout_alignStart="@+id/itemname"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="95dp"
+        android:text="@string/time"
+        android:visibility="invisible"/>
 
+    <TextView
+        android:id="@+id/tracking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/itemname"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="23dp"
+        android:text="@string/tracking" />
+
+    <TextView
+        android:id="@+id/deliver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/price"
+        android:layout_alignTop="@+id/tracking"
+        android:text="@string/deliver" />
 </RelativeLayout>

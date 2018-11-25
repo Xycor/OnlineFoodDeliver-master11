@@ -35,6 +35,7 @@ public class ItemsList extends AppCompatActivity {
         setContentView(R.layout.items_list);
 
         ImageButton imgbtn=findViewById(R.id.cart);
+        ImageButton imgorder=findViewById(R.id.order);
 
         listview=findViewById(R.id.listview);
         listAdapter = new CustomList(this);
@@ -83,6 +84,13 @@ public class ItemsList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(ItemsList.this,MyCart.class);
+                startActivity(i);
+            }
+        });
+        imgorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(ItemsList.this,Placed_orders.class);
                 startActivity(i);
             }
         });

@@ -11,4 +11,9 @@
     <string name="e_food_delivery">E-Food Delivery</string>
     <string name="nexr_day_delivery_cod">Next Day Delivery (COD)</string>
     <string name="variant">Variant</string>
+    <string name="my_orders">My Orders</string>
+    <string name="time">Time of Order</string>
+    <string name="tracking">Tracking Order</string>
+    <string name="track">track</string>
+    <string name="deliver">deliver</string>
 </resources>
