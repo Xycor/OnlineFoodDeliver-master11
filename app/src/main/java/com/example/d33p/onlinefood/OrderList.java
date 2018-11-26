@@ -11,29 +11,29 @@ import java.util.ArrayList;
 
 public class OrderList extends BaseAdapter {
 
-    ArrayList<Cartitems> arrayList;
+    ArrayList<Cartitems> arraylist;
     Context mContext;
     SqliteDB mydb;
     TextView price,itemname,variant,time,tracking,deliver;
     public OrderList(Context context,ArrayList<Cartitems> arrayList) {
-        this.arrayList = arrayList;
+        this.arraylist = arrayList;
         this.mContext=context;
         mydb=new SqliteDB(context);
     }
 
     @Override
     public int getCount() {
-        return this.arrayList.size();
+        return this.arraylist.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return this.arrayList.get(position);
+        return this.arraylist.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return Long.parseLong(arrayList.get(position).getId());
+        return Long.parseLong(arraylist.get(position).getId());
     }
 
     @Override
@@ -47,16 +47,15 @@ public class OrderList extends BaseAdapter {
             time=convertView.findViewById(R.id.timee);
             tracking=convertView.findViewById(R.id.tracking);
             deliver=convertView.findViewById(R.id.deliver);
-
         }
         else{
             convertView.getTag();
         }
-        itemname.setText(arrayList.get(position).getItem());
-        price.setText("Rs."+arrayList.get(position).getPrice());
-        variant.setText(arrayList.get(position).getVariant());
-        tracking.setText("Tracking No. "+arrayList.get(position).getTrack());
-        deliver.setText(arrayList.get(position).getDeliver());
+        itemname.setText(arraylist.get(position).getItem());
+        price.setText("Rs."+arraylist.get(position).getPrice());
+        variant.setText(arraylist.get(position).getVariant());
+        tracking.setText("Tracking No. "+arraylist.get(position).getTrack());
+        deliver.setText(arraylist.get(position).getDeliver());
         return convertView;
     }
 }

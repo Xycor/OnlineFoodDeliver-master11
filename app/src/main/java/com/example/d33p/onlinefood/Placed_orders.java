@@ -22,6 +22,6 @@ public class Placed_orders extends AppCompatActivity {
         arrayList=mydb.getdataOrder();
         listAdapter=new OrderList(this,arrayList);
         listview.setAdapter(listAdapter);
-        listAdapter.notifyDataSetChanged();
+        //listAdapter.notifyDataSetChanged();
     }
 }

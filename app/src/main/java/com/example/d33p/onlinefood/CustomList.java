@@ -33,7 +33,7 @@ public class CustomList extends BaseAdapter{
     public String itrack;
     public String track;
     public int timeint;
-    SqliteDB mydb;
+    public SqliteDB mydb;
 
     List<Retro> arraylist = new ArrayList<>();
     Customviewholder customviewholder;
@@ -41,9 +41,12 @@ public class CustomList extends BaseAdapter{
     SharedPreferences sp;
     StringBuilder sb=new StringBuilder();
     SimpleDateFormat df;
-    String track1;
+    private String track1;
 
-        //txt.setText(df.format(c.getTime()));
+    public String getTrack1() {
+        return track1;
+    }
+    //txt.setText(df.format(c.getTime()));
 
     public void setItem(String[] item) {
         this.item = item;
