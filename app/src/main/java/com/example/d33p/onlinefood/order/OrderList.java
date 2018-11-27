@@ -1,4 +1,4 @@
-package com.example.d33p.onlinefood;
+package com.example.d33p.onlinefood.order;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.d33p.onlinefood.R;
+import com.example.d33p.onlinefood.DB.SqliteDB;
+import com.example.d33p.onlinefood.cart.Cartitems;
 
 import java.util.ArrayList;
 
@@ -44,7 +48,7 @@ public class OrderList extends BaseAdapter {
             itemname=convertView.findViewById(R.id.itemname);
             price=convertView.findViewById(R.id.price);
             variant=convertView.findViewById(R.id.variant);
-            time=convertView.findViewById(R.id.timee);
+            //time=convertView.findViewById(R.id.timee);
             tracking=convertView.findViewById(R.id.tracking);
             deliver=convertView.findViewById(R.id.deliver);
         }

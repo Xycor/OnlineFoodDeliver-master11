@@ -1,12 +1,13 @@
-package com.example.d33p.onlinefood;
+package com.example.d33p.onlinefood.cart;
 
 public class Cartitems {
     private String id,item,variant,inventory,price,track,deliver;
 
-    public Cartitems(String item, String variant, String price) {
+    public Cartitems(String item, String variant, String price,String track) {
         this.item = item;
         this.variant = variant;
         this.price = price;
+        this.track=track;
     }
     public Cartitems(String item, String variant, String price, String track, String deliver) {
         this.item = item;

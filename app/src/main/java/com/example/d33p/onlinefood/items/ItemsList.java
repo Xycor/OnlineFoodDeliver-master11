@@ -1,22 +1,19 @@
-package com.example.d33p.onlinefood;
+package com.example.d33p.onlinefood.items;
 
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.Time;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import com.example.d33p.onlinefood.Api.ForApi;
+import com.example.d33p.onlinefood.R;
+import com.example.d33p.onlinefood.Api.Retro;
+import com.example.d33p.onlinefood.cart.MyCart;
+import com.example.d33p.onlinefood.order.Placed_orders;
+
 import java.util.List;
 
 import retrofit2.Call;

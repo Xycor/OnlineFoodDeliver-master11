@@ -1,16 +1,18 @@
-package com.example.d33p.onlinefood;
+package com.example.d33p.onlinefood.items;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.d33p.onlinefood.R;
+import com.example.d33p.onlinefood.Api.Retro;
+import com.example.d33p.onlinefood.DB.SqliteDB;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -106,7 +108,7 @@ public class CustomList extends BaseAdapter{
                     String time=df.format(c.getTime());
                     timeint=Integer.parseInt(time);
                     itrack=track1=track;
-                    iid=((Retro) getItem(position)).getId();
+                    //iid=((Retro) getItem(position)).getId();
                     iitem=((Retro) getItem(position)).getItem();
                     if(timeint>6 && timeint<=22)
                     {
@@ -116,7 +118,7 @@ public class CustomList extends BaseAdapter{
                         iprice=((Retro) getItem(position)).getPriceC();
                     }
                     ivariant=((Retro) getItem(position)).getVariant();
-                    mydb.insert(iid,iitem,ivariant,iprice,itrack);
+                    mydb.insertcart(iitem,ivariant,Integer.parseInt(iprice),itrack);
                     Toast.makeText(mContext,"Added to Cart "+iitem,Toast.LENGTH_LONG).show();
 
                 }

@@ -1,4 +1,4 @@
-package com.example.d33p.onlinefood;
+package com.example.d33p.onlinefood.Api;
 
 import java.util.List;
 

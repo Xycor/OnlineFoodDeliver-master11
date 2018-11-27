@@ -1,7 +1,6 @@
-package com.example.d33p.onlinefood;
+package com.example.d33p.onlinefood.cart;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,19 +9,22 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.d33p.onlinefood.items.CustomList;
+import com.example.d33p.onlinefood.R;
+import com.example.d33p.onlinefood.DB.SqliteDB;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CartItemsList extends BaseAdapter {
     Button btn;
-    TextView name,price, variant,track;
+    TextView name,price, variant;
+    TextView track;
     View v;
     CheckBox cod;
     //List<Retro> arraylist1 = new ArrayList<>();
     ArrayList<Cartitems> arraylist;
-    SqliteDB mydb;
+    private SqliteDB mydb;
     String track1;
     CustomList cl;
     private Context context;
@@ -64,8 +66,9 @@ public class CartItemsList extends BaseAdapter {
             name=v.findViewById(R.id.itemname);
             price=v.findViewById(R.id.price);
             variant=v.findViewById(R.id.variant);
-            track=v.findViewById(R.id.track);
-            btn.setOnClickListener(new View.OnClickListener() {
+            track=v.findViewById(R.id.trackk);
+
+            /*btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //btn.setText("Order Placed: "+arraylist.get(position).getItem());
@@ -75,21 +78,25 @@ public class CartItemsList extends BaseAdapter {
                     price1=((Cartitems)getItem(position)).getPrice();
                     variant1=((Cartitems)getItem(position)).getVariant();
                     track11=((Cartitems)getItem(position)).getTrack();
+                    System.out.println("///////////////////////////");
+                    System.out.println(track11);
+                    System.out.println("///////////////////////////");
                     if(checkCod)
                     {
                         d="Deliver by tomorrow";
                         Snackbar.make(v.getRootView(),"Order placed and delivered by tomorrow "+arraylist.get(position).getItem(),Snackbar.LENGTH_LONG).show();
-                        mydb.insertcart(name1,variant1,price1,track11,d);
-                        //mydb.delete(track1);
+                        mydb.insertorder(name1,variant1,price1,track11,d);
+                        deleteitem(track1);
                     }
                     else{
                         d="Delivery will be notified";
-                        mydb.insertcart(name1,variant1,price1,track11,d);
+                        mydb.insertorder(name1,variant1,price1,track11,d);
                         Snackbar.make(v.getRootView(),"Order's been placed "+arraylist.get(position).getItem(),Snackbar.LENGTH_LONG).show();
-                        //mydb.delete(track1);
+                        deleteitem(track1);
                     }
                 }
-            });
+            });*/
+
         }
         else{
             convertView.getTag();
@@ -100,4 +107,7 @@ public class CartItemsList extends BaseAdapter {
         track.setText(arraylist.get(position).getTrack());
         return convertView;
     }
+    /*public void deleteitem(String t){
+        mydb.delete(t);
+    }*/
 }

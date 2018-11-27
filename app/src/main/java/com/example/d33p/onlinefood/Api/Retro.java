@@ -1,4 +1,4 @@
-package com.example.d33p.onlinefood;
+package com.example.d33p.onlinefood.Api;
 
 import com.google.gson.annotations.SerializedName;
 
