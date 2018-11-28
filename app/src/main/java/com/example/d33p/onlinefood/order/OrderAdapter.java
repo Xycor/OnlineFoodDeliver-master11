@@ -20,7 +20,7 @@ public class OrderAdapter extends BaseAdapter {
     ArrayList<Orderitems> arraylist;
     Context mContext;
     SqliteDB mydb;
-    TextView price,itemname,variant,time,tracking,deliver,order;
+    TextView price,itemname,variant,time,tracking,deliver,order,totalitems;
     public OrderAdapter(Context context, ArrayList<Orderitems> arrayList) {
         this.arraylist = arrayList;
         this.mContext=context;
@@ -54,6 +54,7 @@ public class OrderAdapter extends BaseAdapter {
             //tracking=convertView.findViewById(R.id.tracking);
             //deliver=convertView.findViewById(R.id.deliver);
             order=convertView.findViewById(R.id.orderid);
+            totalitems=convertView.findViewById(R.id.totalitems);
             order.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -71,6 +72,7 @@ public class OrderAdapter extends BaseAdapter {
         //variant.setText(arraylist.get(position).getVariant());
         //tracking.setText("Tracking No. "+arraylist.get(position).getTrack());
         //deliver.setText(arraylist.get(position).getDeliver());
+        totalitems.setText(arraylist.get(position).getTotalitems());
         order.setText("Order no:- "+arraylist.get(position).getId());
         return convertView;
     }

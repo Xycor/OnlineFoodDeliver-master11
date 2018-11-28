@@ -1,7 +1,7 @@
 package com.example.d33p.onlinefood.order;
 
 public class Orderitems {
-    private String id,item,variant,inventory,price,track,deliver;
+    private String id,item,variant,inventory,price,track,deliver,totalitems;
 
     public Orderitems(String item, String variant, String price,String track) {
         this.item = item;
@@ -28,7 +28,16 @@ public class Orderitems {
         this.deliver=deliver;
     }
 
+    public String getTotalitems() {
+        return totalitems;
+    }
+
+    public void setTotalitems(String totalitems) {
+        this.totalitems = totalitems;
+    }
+
     public Orderitems(String item, String price) {
+
         //this.id = id;
         this.item = item;
         //this.variant = variant;

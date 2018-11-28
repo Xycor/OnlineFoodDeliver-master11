@@ -23,4 +23,5 @@
     <string name="price">price</string>
     <string name="inventory">Inventory</string>
     <string name="items_in_order">Items in Order</string>
+    <string name="totalitems">totalitems</string>
 </resources>

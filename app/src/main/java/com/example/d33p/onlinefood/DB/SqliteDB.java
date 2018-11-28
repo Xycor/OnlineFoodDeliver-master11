@@ -85,10 +85,14 @@ public class SqliteDB extends SQLiteOpenHelper {
     }
     public String getnoofitems(String orderid){
         SQLiteDatabase db=this.getReadableDatabase();
-        String noitems;
-        int a=0;
+        String noitems="";
         Cursor cursor=db.rawQuery("select count(Item) from "+orderitemtable+" where order_id='"+orderid+"'",null);
-        return String.valueOf(cursor.getDouble(0));
+        if(cursor.moveToFirst()) {
+            noitems = cursor.getString(0);
+        } else {
+            noitems = "0";
+        }
+        return noitems;
     }
 
     public ArrayList<Orderitems> gettoorder(){
@@ -97,6 +101,7 @@ public class SqliteDB extends SQLiteOpenHelper {
         Cursor cursor=db.rawQuery("SELECT order_id FROM "+orderidtable,null);
         while(cursor.moveToNext()){
             String orderid=cursor.getString(0);
+            String noitems=cursor.getString(1);
 
             Orderitems order=new Orderitems(orderid);
 
