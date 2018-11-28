@@ -19,6 +19,23 @@ public class Orderitems {
         this.track=track;
         this.deliver=deliver;
     }
+    public Orderitems(String id,String item, String variant, String price, String track, String deliver) {
+        this.id = id;
+        this.item = item;
+        this.variant = variant;
+        this.price = price;
+        this.track=track;
+        this.deliver=deliver;
+    }
+
+    public Orderitems(String item, String price) {
+        //this.id = id;
+        this.item = item;
+        //this.variant = variant;
+        this.price = price;
+        //this.track=track;
+        //this.deliver=deliver;
+    }
 
     public String getId() {
         return id;

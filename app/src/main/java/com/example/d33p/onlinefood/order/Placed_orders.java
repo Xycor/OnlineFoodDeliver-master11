@@ -33,6 +33,6 @@ public class Placed_orders extends AppCompatActivity {
         arrayList=mydb.gettoorder();
         listAdapter=new OrderAdapter(this,arrayList);
         listview.setAdapter(listAdapter);
-        //listAdapter.notifyDataSetChanged();
+        listAdapter.notifyDataSetChanged();
     }
 }

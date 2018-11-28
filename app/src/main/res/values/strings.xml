@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Online Food</string>
     <string name="name">Enter User-Name</string>
+    <string name="item">Item</string>
     <string name="button">Login</string>
     <string name="password">Enter Password</string>
     <string name="cart">Cart</string>
@@ -21,4 +22,5 @@
     <string name="order">order</string>
     <string name="price">price</string>
     <string name="inventory">Inventory</string>
+    <string name="items_in_order">Items in Order</string>
 </resources>

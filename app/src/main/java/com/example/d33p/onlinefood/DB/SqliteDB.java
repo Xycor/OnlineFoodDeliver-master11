@@ -28,6 +28,7 @@ public class SqliteDB extends SQLiteOpenHelper {
     public static final String itemtrack="track";
     public static final String itemdeliver="deliver";
     public static final String oninventory="oninventory";
+    public static final String noOfItems="noOfItems";
 
     public static final String order_id="order_id";
 
@@ -39,7 +40,7 @@ public class SqliteDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //db.execSQL();
-        db.execSQL("create table "+orderidtable+" (order_id text primary key)");
+        db.execSQL("create table "+orderidtable+" (order_id text primary key,noOfItems text)");
         db.execSQL("create table "+orderitemtable+" (order_id text references "+orderidtable+"(orderid),Item text,price integer,variant text,inventory text )");
         db.execSQL("create table "+carttable+" (Id text, Item text, variant text, inventory text,price integer,track text)");
         db.execSQL("create table "+ordertable+" (Id text, Item text, variant text, inventory text,price integer,track text, deliver text)");
@@ -79,6 +80,15 @@ public class SqliteDB extends SQLiteOpenHelper {
             cv.put(itemprice,price);
             db.insert(orderitemtable,null,cv);
         }
+        String noitems=getnoofitems(orderid);
+        db.execSQL("update "+orderidtable+" set noOfItems='"+noitems+"' where order_id='"+orderid+"'");
+    }
+    public String getnoofitems(String orderid){
+        SQLiteDatabase db=this.getReadableDatabase();
+        String noitems;
+        int a=0;
+        Cursor cursor=db.rawQuery("select count(Item) from "+orderitemtable+" where order_id='"+orderid+"'",null);
+        return String.valueOf(cursor.getDouble(0));
     }
 
     public ArrayList<Orderitems> gettoorder(){
@@ -110,6 +120,27 @@ public class SqliteDB extends SQLiteOpenHelper {
             return true;
         }*/
     }
+
+
+
+    public ArrayList<Orderitems> getItemsinOrder(String order_id){
+        SQLiteDatabase db=this.getReadableDatabase();
+        ArrayList<Orderitems> arrayList=new ArrayList<>();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+orderitemtable+" inner join "+orderidtable+" on "
+                +orderidtable+".order_id="+orderitemtable+".order_id where "
+                +orderidtable+".order_id='"+order_id+"'",null);
+
+        while(cursor.moveToNext()){
+            String item=cursor.getString(1);
+            String price=cursor.getString(2);
+            Orderitems order=new Orderitems(item,price);
+            arrayList.add(order);
+        }
+        return arrayList;
+    }
+
+
+
     //public void get
     public void insertorder(String name, String variant, int price, String track, String deliver){
         SQLiteDatabase db=this.getWritableDatabase();
