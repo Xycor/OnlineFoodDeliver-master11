@@ -18,15 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ItemsList">
+        <activity android:name=".items.ItemsList">
             <intent-filter>
                 <action android:name="android.intent.action.ItemsList" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MyCart" />
-        <activity android:name=".Placed_orders"></activity>
+        <activity android:name=".cart.MyCart" />
+        <activity android:name=".order.Placed_orders" />
+        <activity android:name=".OrderListActivity"></activity>
     </application>
 
 </manifest>

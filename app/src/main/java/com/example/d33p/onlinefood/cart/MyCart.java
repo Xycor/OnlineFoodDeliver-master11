@@ -73,8 +73,8 @@ public class MyCart extends AppCompatActivity {
                 SimpleDateFormat forTrack=new SimpleDateFormat("yyMMddHHmmss");
                 ordertrack=forTrack.format(c.getTime());
 
-                mydb.insdelcart();
                 mydb.insertorders(ordertrack);
+                mydb.insdelcart();
             }
         });
 

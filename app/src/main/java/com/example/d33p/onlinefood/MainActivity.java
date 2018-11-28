@@ -1,12 +1,13 @@
 package com.example.d33p.onlinefood;
 
-import android.app.AppComponentFactory;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import com.example.d33p.onlinefood.items.ItemsList;
 
 public class MainActivity extends AppCompatActivity {
 

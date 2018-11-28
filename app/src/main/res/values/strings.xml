@@ -16,4 +16,9 @@
     <string name="tracking">Tracking Order</string>
     <string name="track">track</string>
     <string name="deliver">deliver</string>
+    <string name="my_cart">My Cart</string>
+    <string name="total">Total</string>
+    <string name="order">order</string>
+    <string name="price">price</string>
+    <string name="inventory">Inventory</string>
 </resources>

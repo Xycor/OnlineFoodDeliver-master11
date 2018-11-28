@@ -2,67 +2,68 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/price"
+    <!--TextView
+        android:id="@+id/tracking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/price"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="149dp"
-        android:layout_marginTop="55dp"
-        android:padding="2dp"
-        android:text="Medium Text"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="-47dp"
+        android:text="@string/tracking"
         android:textColor="#4d4d4d"
         android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/itemname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="57dp"
-        android:text="@string/textview"
-        android:textSize="20sp"
-        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/variant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/itemname"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="37dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="287dp"
+        android:layout_marginTop="56dp"
         android:text="@string/variant"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/timee"
+        android:id="@+id/itemname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/itemname"
+        android:layout_alignStart="@+id/tracking"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="95dp"
-        android:text="@string/time"
-        android:visibility="invisible"/>
-
-    <TextView
-        android:id="@+id/tracking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/itemname"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="23dp"
-        android:text="@string/tracking" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="59dp"
+        android:text="@string/textview"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/deliver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/price"
-        android:layout_alignTop="@+id/tracking"
-        android:text="@string/deliver" />
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="23dp"
+        android:text="@string/tracking" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/itemname"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="157dp"
+        android:layout_marginTop="65dp"
+        android:text="@string/price" /-->
+    <TextView
+        android:id="@+id/orderid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="47dp"
+        android:textSize="20sp"
+        android:text="@string/order" />
 </RelativeLayout>

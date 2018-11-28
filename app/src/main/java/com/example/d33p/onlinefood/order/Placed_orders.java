@@ -14,10 +14,10 @@ import java.util.ArrayList;
 public class Placed_orders extends AppCompatActivity {
 
     public ListView listview;
-    public OrderList listAdapter;
+    public OrderAdapter listAdapter;
     TextView amount;
     SqliteDB mydb;
-    ArrayList<Cartitems> arrayList;
+    ArrayList<Orderitems> arrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +26,12 @@ public class Placed_orders extends AppCompatActivity {
         mydb=new SqliteDB(this);
         String tot=mydb.getTotalofOrders();
 
-        amount=findViewById(R.id.amount);
-        amount.setText("Amount Payable Rs."+tot);
+        //amount=findViewById(R.id.amount);
+        //amount.setText("Amount Payable Rs."+tot);
         arrayList=new ArrayList<>();
         listview=findViewById(R.id.orderlists);
-        arrayList=mydb.getdataOrder();
-        listAdapter=new OrderList(this,arrayList);
+        arrayList=mydb.gettoorder();
+        listAdapter=new OrderAdapter(this,arrayList);
         listview.setAdapter(listAdapter);
         //listAdapter.notifyDataSetChanged();
     }

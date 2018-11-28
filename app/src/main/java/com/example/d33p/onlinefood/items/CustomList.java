@@ -24,7 +24,7 @@ public class CustomList extends BaseAdapter{
     private String[] id;
     private String[] item;
     private String[] variant;
-    private String[] inventory;
+    //private String[] inventory;
     private String[] price;
     private String[] priceC;
     public String iid;
@@ -98,6 +98,8 @@ public class CustomList extends BaseAdapter{
             customviewholder.price = convertView.findViewById(R.id.price);
             customviewholder.variant = convertView.findViewById(R.id.variant);
             customviewholder.btn=convertView.findViewById(R.id.add);
+            customviewholder.inventory=convertView.findViewById(R.id.inventory);
+
             df=new SimpleDateFormat("HH");
             customviewholder.btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -129,6 +131,8 @@ public class CustomList extends BaseAdapter{
         }
         customviewholder.itemname.setText(arraylist.get(position).getItem());
         customviewholder.variant.setText(arraylist.get(position).getVariant());
+        //if(mydb.)
+        //customviewholder.inventory.setText();
         if(timeint>6 && timeint<=22){
             customviewholder.price.setText("Rs. "+arraylist.get(position).getPrice());
         }
@@ -139,7 +143,7 @@ public class CustomList extends BaseAdapter{
     }
 
     public class Customviewholder {
-        TextView itemname,price,variant;
+        TextView itemname,price,variant,inventory;
         Button btn;
     }
 }

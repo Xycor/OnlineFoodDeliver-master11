@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.d33p.onlinefood.Api.ForApi;
+import com.example.d33p.onlinefood.DB.SqliteDB;
 import com.example.d33p.onlinefood.R;
 import com.example.d33p.onlinefood.Api.Retro;
 import com.example.d33p.onlinefood.cart.MyCart;
@@ -24,6 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ItemsList extends AppCompatActivity {
 
+    SqliteDB mydb;
     public ListView listview;
     public CustomList listAdapter;
     @Override
@@ -49,6 +51,7 @@ public class ItemsList extends AppCompatActivity {
                 String[] foodprice=new String[foods.size()];
                 for(int i=0;i<foods.size();i++){
                     fooditem[i]=foods.get(i).getItem();
+                    //mydb.insertinventory(foods.get(i).getId(),foods.get(i).getItem(),Integer.parseInt(foods.get(i).getInventory()));
                 }
                 for(int i=0;i<foods.size();i++){
                     foodprice[i]=foods.get(i).getPrice();

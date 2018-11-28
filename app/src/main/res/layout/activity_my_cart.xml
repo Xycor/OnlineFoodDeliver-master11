@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e28111"
-    tools:context=".MyCart">
+    tools:context=".cart.MyCart">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -16,7 +15,8 @@
         android:id="@+id/cartlists"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/carttoolbar"
         android:background="#fff"
         android:padding="8dp"
         android:divider="#1b7fdc"
@@ -30,8 +30,53 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="41dp"
         android:layout_marginTop="22dp"
-        android:text="My Cart"
+        android:text="@string/my_cart"
         android:textSize="30sp"
         android:textStyle="bold"/>
+
+    <ImageButton
+        android:id="@+id/order"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="40dp"
+        android:padding="1dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/orders"
+        android:contentDescription="@string/order" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="93dp"
+        android:text="@string/total"
+        android:textSize="17sp" />
+
+    <CheckBox
+        android:id="@+id/cod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/total"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="-3dp"
+        android:text="COD" />
+
+    <Button
+        android:id="@+id/place"
+        android:layout_width="105dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/total"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-9dp"
+        android:layout_marginEnd="10dp"
+        android:background="#ed750c"
+        android:text="place order"
+        android:textColor="#fff" />
 
 </RelativeLayout>

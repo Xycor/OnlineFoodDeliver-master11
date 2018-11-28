@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="107dp"
+        android:layout_marginStart="165dp"
         android:layout_marginTop="19dp"
         android:padding="2dp"
         android:text="Medium Text"
@@ -27,14 +27,14 @@
         android:textSize="18sp"
         android:textStyle="bold"/>
 
-    <CheckBox
+    <!--CheckBox
         android:id="@+id/cod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/itemname"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="175dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="184dp"
         android:text="@string/nexr_day_delivery_cod" />
 
     <Button
@@ -45,7 +45,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="15dp"
-        android:text="@string/place_order" />
+        android:text="@string/place_order" /-->
 
     <TextView
         android:id="@+id/variant"
@@ -54,17 +54,18 @@
         android:layout_alignTop="@+id/itemname"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="97dp"
+        android:layout_marginEnd="29dp"
         android:text="@string/variant"
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/track"
+        android:id="@+id/trackk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/itemname"
         android:layout_alignParentStart="true"
         android:layout_marginStart="55dp"
-        android:text="@string/track"/>
+        android:text="@string/track"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

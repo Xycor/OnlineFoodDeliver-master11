@@ -13,13 +13,13 @@ import com.example.d33p.onlinefood.cart.Cartitems;
 
 import java.util.ArrayList;
 
-public class OrderList extends BaseAdapter {
+public class OrderAdapter extends BaseAdapter {
 
-    ArrayList<Cartitems> arraylist;
+    ArrayList<Orderitems> arraylist;
     Context mContext;
     SqliteDB mydb;
-    TextView price,itemname,variant,time,tracking,deliver;
-    public OrderList(Context context,ArrayList<Cartitems> arrayList) {
+    TextView price,itemname,variant,time,tracking,deliver,order;
+    public OrderAdapter(Context context, ArrayList<Orderitems> arrayList) {
         this.arraylist = arrayList;
         this.mContext=context;
         mydb=new SqliteDB(context);
@@ -45,21 +45,23 @@ public class OrderList extends BaseAdapter {
         if(convertView==null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.order_list_items, null);
-            itemname=convertView.findViewById(R.id.itemname);
-            price=convertView.findViewById(R.id.price);
-            variant=convertView.findViewById(R.id.variant);
+            //itemname=convertView.findViewById(R.id.itemname);
+            //price=convertView.findViewById(R.id.price);
+            //variant=convertView.findViewById(R.id.variant);
             //time=convertView.findViewById(R.id.timee);
-            tracking=convertView.findViewById(R.id.tracking);
-            deliver=convertView.findViewById(R.id.deliver);
+            //tracking=convertView.findViewById(R.id.tracking);
+            //deliver=convertView.findViewById(R.id.deliver);
+            order=convertView.findViewById(R.id.order);
         }
         else{
             convertView.getTag();
         }
-        itemname.setText(arraylist.get(position).getItem());
-        price.setText("Rs."+arraylist.get(position).getPrice());
-        variant.setText(arraylist.get(position).getVariant());
-        tracking.setText("Tracking No. "+arraylist.get(position).getTrack());
-        deliver.setText(arraylist.get(position).getDeliver());
+        //itemname.setText(arraylist.get(position).getItem());
+        //price.setText("Rs."+arraylist.get(position).getPrice());
+        //variant.setText(arraylist.get(position).getVariant());
+        //tracking.setText("Tracking No. "+arraylist.get(position).getTrack());
+        //deliver.setText(arraylist.get(position).getDeliver());
+        order.setText(arraylist.get(position).getId());
         return convertView;
     }
 }
