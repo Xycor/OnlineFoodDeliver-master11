@@ -1,44 +1,20 @@
-package com.example.d33p.onlinefood.order;
+package com.example.d33p.onlinefood.items;
 
-public class Orderitems {
-    private String id,item,variant,inventory,price,track,deliver,totalitems;
+public class FoodItemsList {
+    private String id,item,variant,inventory,price,track,deliver;
 
-    public Orderitems(String item, String variant, String price, String track) {
+    public FoodItemsList(String item, String variant, String price, String track) {
         this.item = item;
         this.variant = variant;
         this.price = price;
         this.track=track;
-
     }
-    public Orderitems(String id,String totalitems,String deliver,String track,String abc) {
-        this.id = id;
-        this.totalitems=totalitems;
-        this.deliver=deliver;
-    }
-    /*public Orderitems(String item, String variant, String price, String track, String deliver) {
+    public FoodItemsList(String item, String variant, String price, String track, String deliver) {
         this.item = item;
         this.variant = variant;
         this.price = price;
         this.track=track;
         this.deliver=deliver;
-    }*/
-    public Orderitems(String id,String item, String variant, String price, String track, String deliver) {
-        this.id = id;
-        this.item = item;
-        this.variant = variant;
-        this.price = price;
-        this.track=track;
-        this.deliver=deliver;
-    }
-
-    public Orderitems(String item, String price,String variant) {
-
-        //this.id = id;
-        this.item = item;
-        this.price = price;
-        this.variant = variant;
-        //this.track=track;
-        //this.deliver=deliver;
     }
 
     public String getId() {
@@ -96,16 +72,4 @@ public class Orderitems {
     public void setDeliver(String deliver) {
         this.deliver = deliver;
     }
-
-    public String getTotalitems() {
-        return totalitems;
-    }
-
-    public void setTotalitems(String totalitems) {
-        this.totalitems = totalitems;
-    }
-
 }
-
-
-

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class OrderListActivity extends AppCompatActivity {
 
-    TextView order;
+    TextView order,delivery;
     ListView lv;
     public ItemsinOrderAdapter adapter;
     ArrayList<Orderitems> arrayList;
@@ -23,9 +23,12 @@ public class OrderListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_list);
         String orderid=getIntent().getStringExtra("orderid");
+        String deliver=getIntent().getStringExtra("deliver");
         mydb=new SqliteDB(this);
         order=findViewById(R.id.byorderid);
-        order.setText(orderid);
+        delivery=findViewById(R.id.delivery);
+        order.setText("Order id: "+orderid);
+        delivery.setText(deliver);
         arrayList=new ArrayList<>();
         arrayList=mydb.getItemsinOrder(orderid);
         lv=findViewById(R.id.listview);

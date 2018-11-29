@@ -52,7 +52,7 @@ public class OrderAdapter extends BaseAdapter {
             //variant=convertView.findViewById(R.id.variant);
             //time=convertView.findViewById(R.id.timee);
             //tracking=convertView.findViewById(R.id.tracking);
-            //deliver=convertView.findViewById(R.id.deliver);
+            deliver=convertView.findViewById(R.id.delivery);
             order=convertView.findViewById(R.id.orderid);
             totalitems=convertView.findViewById(R.id.totalitems);
             order.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +60,7 @@ public class OrderAdapter extends BaseAdapter {
                 public void onClick(View v) {
                     Intent i=new Intent(mContext,OrderListActivity.class);
                     i.putExtra("orderid",arraylist.get(position).getId());
+                    i.putExtra("deliver",arraylist.get(position).getDeliver());
                     mContext.startActivity(i);
                 }
             });
@@ -72,7 +73,7 @@ public class OrderAdapter extends BaseAdapter {
         //variant.setText(arraylist.get(position).getVariant());
         //tracking.setText("Tracking No. "+arraylist.get(position).getTrack());
         //deliver.setText(arraylist.get(position).getDeliver());
-        totalitems.setText(arraylist.get(position).getTotalitems());
+        totalitems.setText(arraylist.get(position).getTotalitems()+" Items");
         order.setText("Order no:- "+arraylist.get(position).getId());
         return convertView;
     }

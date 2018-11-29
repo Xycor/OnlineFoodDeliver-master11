@@ -45,7 +45,7 @@ public class ItemsinOrderAdapter extends BaseAdapter {
         if(convertView==null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
             convertView=inflater.inflate(R.layout.order_list_item_contents,null);
-            track=convertView.findViewById(R.id.track);
+            //track=convertView.findViewById(R.id.track);
             price=convertView.findViewById(R.id.price);
             variant=convertView.findViewById(R.id.variant);
             item=convertView.findViewById(R.id.item);
@@ -54,7 +54,8 @@ public class ItemsinOrderAdapter extends BaseAdapter {
             convertView.getTag();
         }
         item.setText(arrayList.get(position).getItem());
-        price.setText(arrayList.get(position).getPrice());
+        price.setText("Rs. "+arrayList.get(position).getPrice());
+        variant.setText(arrayList.get(position).getVariant());
         return convertView;
     }
 }

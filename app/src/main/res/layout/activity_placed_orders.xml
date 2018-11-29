@@ -17,9 +17,9 @@
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
         android:background="#fff"
-        android:padding="8dp"
+        android:padding="12dp"
         android:divider="#1b7fdc"
-        android:dividerHeight="5sp"></ListView>
+        android:dividerHeight="2sp"></ListView>
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

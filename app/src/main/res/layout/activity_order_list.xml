@@ -5,28 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OrderListActivity">
+
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="105dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
         android:background="@color/colorPrimary">
+
         <TextView
             android:id="@+id/byorderid"
             android:layout_width="wrap_content"
             android:layout_height="30sp"
+            android:layout_marginTop="10dp"
+            android:text="@string/items_in_order"
             android:textColor="#fff"
-            android:textSize="18sp"
-            android:visibility="invisible"/>
+            android:textSize="18sp" />
         <TextView
-            android:id="@+id/itemsinorder"
+            android:id="@+id/delivery"
             android:layout_width="wrap_content"
-            android:layout_height="30sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="73dp"
+            android:layout_marginStart="-40dp"
+            android:text="@string/textview"
             android:textColor="#fff"
-            android:textSize="18sp"
-            android:text="@string/items_in_order"/>
+            android:textSize="18sp"/>
+
     </android.support.v7.widget.Toolbar>
+
     <ListView
         android:id="@+id/listview"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="110dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></ListView>
 
