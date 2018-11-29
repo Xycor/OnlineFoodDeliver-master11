@@ -2,6 +2,7 @@ package com.example.d33p.onlinefood.cart;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -77,6 +78,7 @@ public class MyCart extends AppCompatActivity {
                 timeorder=timeoforder.format(c.getTime());
                 mydb.insertorders(ordertrack,d,timeorder);
                 mydb.insdelcart();
+                Snackbar.make(v,"Order Placed",Snackbar.LENGTH_LONG).show();
             }
         });
 

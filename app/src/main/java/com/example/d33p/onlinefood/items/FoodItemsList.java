@@ -1,20 +1,23 @@
 package com.example.d33p.onlinefood.items;
 
 public class FoodItemsList {
-    private String id,item,variant,inventory,price,track,deliver;
+    private String id,item,variant,track,deliver;
+    private int inventory,price,pricec;
 
-    public FoodItemsList(String item, String variant, String price, String track) {
+    public FoodItemsList(String item, String variant, int price, String track) {
         this.item = item;
         this.variant = variant;
         this.price = price;
         this.track=track;
     }
-    public FoodItemsList(String item, String variant, String price, String track, String deliver) {
+
+    public FoodItemsList(String id, String item, String variant, int inventory, int price, int pricec) {
+        this.id=id;
         this.item = item;
         this.variant = variant;
+        this.inventory=inventory;
         this.price = price;
-        this.track=track;
-        this.deliver=deliver;
+        this.pricec=pricec;
     }
 
     public String getId() {
@@ -41,20 +44,28 @@ public class FoodItemsList {
         this.variant = variant;
     }
 
-    public String getInventory() {
+    public int getInventory() {
         return inventory;
     }
 
-    public void setInventory(String inventory) {
+    public void setInventory(int inventory) {
         this.inventory = inventory;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getPricec() {
+        return pricec;
+    }
+
+    public void setPricec(int pricec) {
+        this.pricec = pricec;
     }
 
     public String getTrack() {

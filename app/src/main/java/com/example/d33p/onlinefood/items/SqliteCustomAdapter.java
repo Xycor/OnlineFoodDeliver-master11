@@ -13,15 +13,16 @@ import android.widget.Toast;
 import com.example.d33p.onlinefood.Api.Retro;
 import com.example.d33p.onlinefood.DB.SqliteDB;
 import com.example.d33p.onlinefood.R;
+import com.example.d33p.onlinefood.cart.Cartitems;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class SqliteCustomAdapter{ //extends BaseAdapter {
+public class SqliteCustomAdapter extends BaseAdapter {
 
-    /*private String[] id;
+    private String[] id;
     private String[] item;
     private String[] variant;
     //private String[] inventory;
@@ -30,15 +31,15 @@ public class SqliteCustomAdapter{ //extends BaseAdapter {
     public String iid;
     public String iitem;
     public String ivariant;
-    public String iinventory;
-    public String iprice;
+    public int iinventory;
+    public int iprice;
     public String itrack;
     public String track;
-    public int timeint;
+    public int timeint,i=0;
     public SqliteDB mydb;
 
     ArrayList<FoodItemsList> arraylist = new ArrayList<>();
-    SqliteCustomAdapter.Customviewholder1 customviewholder;
+    SqliteCustomAdapter.Customviewholder customviewholder;
     private Context mContext;
     SharedPreferences sp;
     StringBuilder sb=new StringBuilder();
@@ -54,13 +55,12 @@ public class SqliteCustomAdapter{ //extends BaseAdapter {
         this.item = item;
     }
 
-    public SqliteCustomAdapter(Context context) {
-        mContext = context;
-        //sp=mContext.getSharedPreferences("com.example.d33p.onlinefood",Context.MODE_PRIVATE);
-        mydb=new SqliteDB(mContext);
+    public SqliteCustomAdapter(Context context,ArrayList<FoodItemsList> arraylist) {
+        this.mContext = context;
+        this.arraylist=arraylist;
+        mydb=new SqliteDB(context);
     }
-
-    /*@Override
+    @Override
     public int getCount() {
         return this.arraylist.size();
     }
@@ -75,14 +75,6 @@ public class SqliteCustomAdapter{ //extends BaseAdapter {
         return Long.parseLong(this.arraylist.get(position).getId());
     }
 
-    public SqliteCustomAdapter(String[] price) {
-        this.price = price;
-    }
-
-    public SqliteCustomAdapter(ArrayList<FoodItemsList> arraylist) {
-        this.arraylist = arraylist;
-    }
-
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         //final int pos=position;
@@ -90,10 +82,10 @@ public class SqliteCustomAdapter{ //extends BaseAdapter {
         //final SharedPreferences.Editor edit=sp.edit();
         //System.out.println("                "+track);
 
-        /*if(convertView == null) {
+        if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.custom_list_items, null, false);
-            customviewholder = new SqliteCustomAdapter.Customviewholder1();
+            customviewholder = new SqliteCustomAdapter.Customviewholder();
             customviewholder.itemname =  convertView.findViewById(R.id.itemname);
             customviewholder.price = convertView.findViewById(R.id.price);
             customviewholder.variant = convertView.findViewById(R.id.variant);
@@ -117,33 +109,35 @@ public class SqliteCustomAdapter{ //extends BaseAdapter {
                         iprice=arraylist.get(position).getPrice();
                     }
                     else{
-                        iprice=arraylist.get(position).getPriceC();
+                        iprice=arraylist.get(position).getPricec();
                     }
-                    ivariant=((Retro) getItem(position)).getVariant();
-                    mydb.insertcart(iitem,ivariant,Integer.parseInt(iprice),itrack);
+                    ivariant=arraylist.get(position).getVariant();
+                    iinventory=arraylist.get(position).getInventory();
+                    i=i+1;
+                    mydb.operateinventory(arraylist.get(position).getId(),i);
+                    mydb.insertcart(iitem,ivariant,iprice,itrack);
                     Toast.makeText(mContext,"Added to Cart "+iitem,Toast.LENGTH_LONG).show();
 
                 }
             });
             convertView.setTag(customviewholder);
         } else {
-            customviewholder = (SqliteCustomAdapter.Customviewholder1) convertView.getTag();
+            customviewholder = (SqliteCustomAdapter.Customviewholder) convertView.getTag();
         }
         customviewholder.itemname.setText(arraylist.get(position).getItem());
         customviewholder.variant.setText(arraylist.get(position).getVariant());
-        //if(mydb.)
-        //customviewholder.inventory.setText();
         if(timeint>6 && timeint<=22){
             customviewholder.price.setText("Rs. "+arraylist.get(position).getPrice());
         }
         else {
-            customviewholder.price.setText("Rs. " + arraylist.get(position).getPrice());
+            customviewholder.price.setText("Rs. " + arraylist.get(position).getPricec());
         }
+        customviewholder.inventory.setText(arraylist.get(position).getInventory()+" items in stock");
         return convertView;
-    /*}
+    }
 
-    public class Customviewholder1 {
+    public class Customviewholder {
         TextView itemname,price,variant,inventory;
         Button btn;
-    }*/
+    }
 }

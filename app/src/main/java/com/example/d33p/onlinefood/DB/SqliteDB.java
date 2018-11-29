@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.d33p.onlinefood.cart.Cartitems;
+import com.example.d33p.onlinefood.items.FoodItemsList;
 import com.example.d33p.onlinefood.order.Orderitems;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class SqliteDB extends SQLiteOpenHelper {
     public static final String itemvariant="variant";
     public static final String iteminventory="inventory";
     public static final String itemprice="price";
+    public static final String itempricec="pricec";
     public static final String itemtrack="track";
     public static final String itemdeliver="deliver";
     public static final String oninventory="oninventory";
@@ -45,7 +47,7 @@ public class SqliteDB extends SQLiteOpenHelper {
         db.execSQL("create table "+orderitemtable+" (order_id text references "+orderidtable+"(orderid),Item text,price integer,variant text,inventory text )");
         db.execSQL("create table "+carttable+" (Id text, Item text, variant text, inventory text,price integer,track text)");
         db.execSQL("create table "+ordertable+" (Id text, Item text, variant text, inventory text,price integer,track text, deliver text)");
-        db.execSQL("create table "+oninventory+"(Id text, Item text, inventory text)");
+        db.execSQL("create table "+oninventory+"(Id text, Item text,variant text, inventory integer,price integer,pricec integer)");
     }
 
     @Override
@@ -234,15 +236,48 @@ public class SqliteDB extends SQLiteOpenHelper {
         }
         return s;
     }
-    public void insertinventory(String id,String item,int inventory){
+    public void insertinventory(String id,String item,String variant,int inventory,int price,int pricec){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
         cv.put(itemid,id);
         cv.put(itemname,item);
+        cv.put(itemvariant,variant);
         cv.put(iteminventory,inventory);
+        cv.put(itemprice,price);
+        cv.put(itempricec,pricec);
         db.insert(oninventory,null,cv);
     }
+    public ArrayList<FoodItemsList> getdatalistitems(){
+        ArrayList<FoodItemsList> arrayList=new ArrayList<>();
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+oninventory,null);
+        while(cursor.moveToNext()){
+            String idd=cursor.getString(0);
+            String name=cursor.getString(1);
+            String variant=cursor.getString(2);
+            int inventory=cursor.getInt(3);
+            int price=cursor.getInt(4);
+            int pricec=cursor.getInt(5);
+            FoodItemsList items=new FoodItemsList(idd,name,variant,inventory,price,pricec);
 
+            arrayList.add(items);
+        }
+        return arrayList;
+    }
+
+    public void operateinventory(String id,int i){
+        SQLiteDatabase db=this.getWritableDatabase();
+        SQLiteDatabase db1=this.getReadableDatabase();
+        int s;
+        Cursor cursor=db.rawQuery("select inventory from "+oninventory+" where Id='"+id+"'",null);
+        if(cursor.moveToFirst()) {
+            s = cursor.getInt(0);
+        }
+        else{
+            s=0;
+        }
+        db.execSQL("update oninventory set inventory="+(s-i)+" where Id='"+id+"'");
+    }
 
 
     /*public void delete(String track){
