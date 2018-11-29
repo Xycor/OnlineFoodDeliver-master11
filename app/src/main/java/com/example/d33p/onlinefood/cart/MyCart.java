@@ -64,16 +64,17 @@ public class MyCart extends AppCompatActivity {
         place.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*if(check.isChecked()){
+                if(check.isChecked()){
                     d="Deliver by Tomorrow";
                 }
                 else{
                     d="Delivery will be notified";
-                }*/Calendar c=Calendar.getInstance();
+                }
+                Calendar c=Calendar.getInstance();
                 SimpleDateFormat forTrack=new SimpleDateFormat("yyMMddHHmmss");
                 ordertrack=forTrack.format(c.getTime());
 
-                mydb.insertorders(ordertrack);
+                mydb.insertorders(ordertrack,d);
                 mydb.insdelcart();
             }
         });

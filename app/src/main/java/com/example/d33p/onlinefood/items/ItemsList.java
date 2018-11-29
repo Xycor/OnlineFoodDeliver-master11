@@ -28,10 +28,13 @@ public class ItemsList extends AppCompatActivity {
     SqliteDB mydb;
     public ListView listview;
     public CustomList listAdapter;
+    int a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.items_list);
+
+        mydb=new SqliteDB(this);
 
         ImageButton imgbtn=findViewById(R.id.cart);
         ImageButton imgorder=findViewById(R.id.order);
@@ -56,23 +59,22 @@ public class ItemsList extends AppCompatActivity {
                 for(int i=0;i<foods.size();i++){
                     foodprice[i]=foods.get(i).getPrice();
                 }
+                /*if(a){
+                    for(int i=0;i<foods.size();i++){
+                        mydb.insertinventory(foods.get(i).getId(),foods.get(i).getItem(),Integer.parseInt(foods.get(i).getInventory()));
+                    }
+                }*/
 
                 listAdapter.arraylist = foods;
                 listview.setAdapter(listAdapter);
-//                listAdapter.notifyDataSetChanged();
 
-
-
-
-                //listview.setAdapter(new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_list_items,fooditem));
-                /*listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        /*Intent i=new Intent(MainActivity.this,Main2Activity.class);
-                        i.putExtra("FoodItem",listview.getItemAtPosition(position).toString());
-                        startActivity(i);
+                a=Integer.parseInt(mydb.checkinventory());
+                if(a==0){
+                    for(int i=0;i<foods.size();i++){
+                        mydb.insertinventory(foods.get(i).getId(),foods.get(i).getItem(),Integer.parseInt(foods.get(i).getInventory()));
                     }
-                });*/
+                }
+                System.out.println(a);
             }
 
             @Override
