@@ -39,7 +39,7 @@ public class MyCart extends AppCompatActivity {
     TextView total;
     Button place;
     CheckBox check;
-    String d,ordertrack;
+    String d,ordertrack,timeorder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,9 +72,10 @@ public class MyCart extends AppCompatActivity {
                 }
                 Calendar c=Calendar.getInstance();
                 SimpleDateFormat forTrack=new SimpleDateFormat("yyMMddHHmmss");
+                SimpleDateFormat timeoforder=new SimpleDateFormat("EEE,MMM d,''yy, h:mm a");
                 ordertrack=forTrack.format(c.getTime());
-
-                mydb.insertorders(ordertrack,d);
+                timeorder=timeoforder.format(c.getTime());
+                mydb.insertorders(ordertrack,d,timeorder);
                 mydb.insdelcart();
             }
         });

@@ -22,6 +22,7 @@ public class SqliteDB extends SQLiteOpenHelper {
 
     public static final String itemid="Id";
     public static final String itemname="Item";
+    public static final String ordertime="time";
     public static final String itemvariant="variant";
     public static final String iteminventory="inventory";
     public static final String itemprice="price";
@@ -40,7 +41,7 @@ public class SqliteDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //db.execSQL();
-        db.execSQL("create table "+orderidtable+" (order_id text primary key,noOfItems text,deliver text)");
+        db.execSQL("create table "+orderidtable+" (order_id text primary key,noOfItems text,deliver text,time text)");
         db.execSQL("create table "+orderitemtable+" (order_id text references "+orderidtable+"(orderid),Item text,price integer,variant text,inventory text )");
         db.execSQL("create table "+carttable+" (Id text, Item text, variant text, inventory text,price integer,track text)");
         db.execSQL("create table "+ordertable+" (Id text, Item text, variant text, inventory text,price integer,track text, deliver text)");
@@ -60,11 +61,12 @@ public class SqliteDB extends SQLiteOpenHelper {
         //db.execSQL("create table "+carttable+" (Id text, Item text, variant text, inventory text,price integer,track text)");
     }
 
-    public void insertorders(String orderid,String deliver){
+    public void insertorders(String orderid,String deliver, String time){
         SQLiteDatabase db1=this.getWritableDatabase();
         ContentValues cv1=new ContentValues();
         cv1.put(order_id,orderid);
         cv1.put(itemdeliver,deliver);
+        cv1.put(ordertime,time);
         db1.insert(orderidtable,null,cv1);
         //ArrayList<Orderitems> arrayList=new ArrayList<>();
         SQLiteDatabase dbr=this.getReadableDatabase();
@@ -104,8 +106,9 @@ public class SqliteDB extends SQLiteOpenHelper {
             String orderid=cursor.getString(0);
             String noitems=cursor.getString(1);
             String deliver=cursor.getString(2);
+            String timeOrder=cursor.getString(3);
 
-            Orderitems order=new Orderitems(orderid,noitems,deliver,"","");
+            Orderitems order=new Orderitems(orderid,noitems,deliver,timeOrder,"");
 
             arrayList.add(order);
         }

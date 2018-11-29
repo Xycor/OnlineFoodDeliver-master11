@@ -18,8 +18,8 @@
         android:layout_marginTop="100dp"
         android:background="#fff"
         android:padding="12dp"
-        android:divider="#1b7fdc"
-        android:dividerHeight="2sp"></ListView>
+        android:divider="#fdfeff"
+        android:dividerHeight="10sp"></ListView>
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

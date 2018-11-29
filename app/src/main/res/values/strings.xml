@@ -25,4 +25,6 @@
     <string name="items_in_order">Items in Order</string>
     <string name="totalitems">totalitems</string>
     <string name="textview1">TextView</string>
+    <string name="timeoforder">timeoforder</string>
+    <string name="go"> > </string>
 </resources>

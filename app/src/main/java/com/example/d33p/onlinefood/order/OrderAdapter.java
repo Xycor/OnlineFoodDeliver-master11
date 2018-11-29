@@ -47,10 +47,11 @@ public class OrderAdapter extends BaseAdapter {
         if(convertView==null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.order_list_items, null);
+            convertView.setBackground(mContext.getDrawable(R.drawable.order_item_style));
             //itemname=convertView.findViewById(R.id.itemname);
             //price=convertView.findViewById(R.id.price);
             //variant=convertView.findViewById(R.id.variant);
-            //time=convertView.findViewById(R.id.timee);
+            time=convertView.findViewById(R.id.timeoforder);
             //tracking=convertView.findViewById(R.id.tracking);
             deliver=convertView.findViewById(R.id.delivery);
             order=convertView.findViewById(R.id.orderid);
@@ -72,9 +73,10 @@ public class OrderAdapter extends BaseAdapter {
         //price.setText("Rs."+arraylist.get(position).getPrice());
         //variant.setText(arraylist.get(position).getVariant());
         //tracking.setText("Tracking No. "+arraylist.get(position).getTrack());
-        //deliver.setText(arraylist.get(position).getDeliver());
+        time.setText(arraylist.get(position).getOrdertime());
+        deliver.setText(arraylist.get(position).getDeliver());
         totalitems.setText(arraylist.get(position).getTotalitems()+" Items");
-        order.setText("Order no:- "+arraylist.get(position).getId());
+        order.setText("Order: "+arraylist.get(position).getId());
         return convertView;
     }
 }

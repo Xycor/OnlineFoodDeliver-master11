@@ -1,7 +1,15 @@
 package com.example.d33p.onlinefood.order;
 
 public class Orderitems {
-    private String id,item,variant,inventory,price,track,deliver,totalitems;
+    private String id;
+    private String item;
+    private String variant;
+    private String inventory;
+    private String price;
+    private String track;
+    private String deliver;
+    private String totalitems;
+    private String ordertime;
 
     public Orderitems(String item, String variant, String price, String track) {
         this.item = item;
@@ -10,10 +18,11 @@ public class Orderitems {
         this.track=track;
 
     }
-    public Orderitems(String id,String totalitems,String deliver,String track,String abc) {
+    public Orderitems(String id,String totalitems,String deliver,String ordertime,String track) {
         this.id = id;
         this.totalitems=totalitems;
         this.deliver=deliver;
+        this.ordertime=ordertime;
     }
     /*public Orderitems(String item, String variant, String price, String track, String deliver) {
         this.item = item;
@@ -103,6 +112,13 @@ public class Orderitems {
 
     public void setTotalitems(String totalitems) {
         this.totalitems = totalitems;
+    }
+    public String getOrdertime() {
+        return ordertime;
+    }
+
+    public void setOrdertime(String ordertime) {
+        this.ordertime = ordertime;
     }
 
 }

@@ -58,6 +58,7 @@ public class CartItemsList extends BaseAdapter {
         if(convertView==null){
             LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView=inflater.inflate(R.layout.cart_list_items,null);
+            convertView.setBackground(context.getDrawable(R.drawable.list_item_style));
             //cl=new CustomList(context);
             btn=convertView.findViewById(R.id.place);
             v=convertView;

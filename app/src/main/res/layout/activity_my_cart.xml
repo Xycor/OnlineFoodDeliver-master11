@@ -15,12 +15,12 @@
         android:id="@+id/cartlists"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:layout_below="@+id/carttoolbar"
         android:background="#fff"
         android:padding="8dp"
-        android:divider="#1b7fdc"
-        android:dividerHeight="5sp"></ListView>
+        android:divider="#fdfcfc"
+        android:dividerHeight="8sp"></ListView>
 
     <TextView
         android:id="@+id/textView"
