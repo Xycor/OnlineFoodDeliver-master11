@@ -98,28 +98,27 @@ public class SqliteCustomAdapter extends BaseAdapter {
             customviewholder.btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Calendar c=Calendar.getInstance();
-                    SimpleDateFormat forTrack=new SimpleDateFormat("yyMMddHHmmss");
-                    track=forTrack.format(c.getTime());
-                    String time=df.format(c.getTime());
-                    timeint=Integer.parseInt(time);
-                    itrack=track1=track;
-                    //iid=((Retro) getItem(position)).getId();
-                    iitem=arraylist.get(position).getItem();
-                    if(timeint>6 && timeint<=22)
-                    {
-                        iprice=arraylist.get(position).getPrice();
-                    }
-                    else{
-                        iprice=arraylist.get(position).getPricec();
-                    }
-                    ivariant=arraylist.get(position).getVariant();
-                    iinventory=arraylist.get(position).getInventory();
-                    i=Integer.parseInt(quantity.getText().toString());
-                    mydb.operateinventory(arraylist.get(position).getId(),i);
-                    mydb.insertcart(iitem,ivariant,iprice,itrack);
-                    Toast.makeText(mContext,"Added to Cart "+iitem,Toast.LENGTH_LONG).show();
-
+                Calendar c=Calendar.getInstance();
+                SimpleDateFormat forTrack=new SimpleDateFormat("yyMMddHHmmss");
+                track=forTrack.format(c.getTime());
+                String time=df.format(c.getTime());
+                timeint=Integer.parseInt(time);
+                itrack=track1=track;
+                //iid=((Retro) getItem(position)).getId();
+                iitem=arraylist.get(position).getItem();
+                if(timeint>6 && timeint<=22)
+                {
+                    iprice=arraylist.get(position).getPrice();
+                }
+                else{
+                    iprice=arraylist.get(position).getPricec();
+                }
+                ivariant=arraylist.get(position).getVariant();
+                iinventory=arraylist.get(position).getInventory();
+                i=Integer.parseInt(quantity.getText().toString());
+                mydb.operateinventory(arraylist.get(position).getId(),i);
+                mydb.insertcart(iitem,ivariant,iprice,itrack);
+                Toast.makeText(mContext,"Added to Cart "+iitem,Toast.LENGTH_LONG).show();
                 }
             });
             convertView.setTag(customviewholder);
