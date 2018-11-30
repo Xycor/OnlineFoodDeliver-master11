@@ -40,6 +40,6 @@ public class OrderListActivity extends AppCompatActivity {
         lv=findViewById(R.id.listview);
         adapter=new ItemsinOrderAdapter(this,arrayList);
         lv.setAdapter(adapter);
-        //adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 }
