@@ -64,8 +64,7 @@
         android:background="@drawable/quantitybackground"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:inputType="textPersonName"
-        android:text="1" />
+        android:inputType="number" />
 
     <TextView
         android:id="@+id/textView2"
