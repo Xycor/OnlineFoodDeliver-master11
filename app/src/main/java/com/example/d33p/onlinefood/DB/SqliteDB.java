@@ -20,6 +20,7 @@ public class SqliteDB extends SQLiteOpenHelper {
     public static final String ordertable="placeditems";
     public static final String orderidtable="orderid";
     public static final String orderitemtable="ordereditems";
+    public static final String orderitemdistincttable="ordereditemsdistinct";
 
     public static final String itemid="Id";
     public static final String itemname="Item";
@@ -47,6 +48,7 @@ public class SqliteDB extends SQLiteOpenHelper {
         db.execSQL("create table "+orderitemtable+" (order_id text references "+orderidtable+"(orderid),Item text,price integer,variant text,inventory text )");
         db.execSQL("create table "+carttable+" (Id text, Item text, variant text, inventory text,price integer,track text)");
         db.execSQL("create table "+ordertable+" (Id text, Item text, variant text, inventory text,price integer,track text, deliver text)");
+        db.execSQL("create table "+orderitemdistincttable+" (order_id text references "+orderidtable+"(orderid),Item text,price integer,variant text,inventory text )");
         db.execSQL("create table "+oninventory+"(Id text, Item text,variant text, inventory integer,price integer,pricec integer)");
     }
 
@@ -133,28 +135,30 @@ public class SqliteDB extends SQLiteOpenHelper {
         }*/
     }
 
-
-
     public ArrayList<Orderitems> getItemsinOrder(String order_id){
         SQLiteDatabase db=this.getReadableDatabase();
         ArrayList<Orderitems> arrayList=new ArrayList<>();
-        Cursor cursor=db.rawQuery("SELECT * FROM "+orderitemtable+" inner join "+orderidtable+" on "
-                +orderidtable+".order_id="+orderitemtable+".order_id where "
-                +orderidtable+".order_id='"+order_id+"'",null);
+        Orderitems order;
+        Cursor cursor=db.rawQuery("SELECT distinct(Item),price,inventory,variant FROM ordereditemsdistinct inner join orderid on \n" +
+                "                orderid.order_id=ordereditemsdistinct.order_id where ordereditemsdistinct.order_id='"+order_id+"'",null);
 
         while(cursor.moveToNext()){
-            String item=cursor.getString(1);
-            String price=cursor.getString(2);
+            String item=cursor.getString(0);
+            String price=cursor.getString(1);
+            String invent=cursor.getString(2);
             String variant=cursor.getString(3);
-            Orderitems order=new Orderitems(item,price,variant);
+            if(Integer.parseInt(invent)>1){
+                order=new Orderitems(item,price,invent,variant+" each","","");
+            }
+            else{
+                order=new Orderitems(item,price,invent,variant,"","");
+            }
             arrayList.add(order);
         }
         return arrayList;
     }
 
 
-
-    //public void get
     public void insertorder(String name, String variant, int price, String track, String deliver){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
@@ -287,6 +291,41 @@ public class SqliteDB extends SQLiteOpenHelper {
         }
         else{
             s="0";
+        }
+        return s;
+    }
+    public void checkdistinctitems(String orderid){
+        SQLiteDatabase db=this.getReadableDatabase();
+        SQLiteDatabase db1=this.getWritableDatabase();
+        ArrayList<Orderitems> arrayList=new ArrayList<>();
+        ContentValues cv=new ContentValues();
+        Cursor cursor=db.rawQuery("select order_id,Item,price,variant from ordereditems",null);
+        int count;
+        String oid,item,variant; int price;
+        while(cursor.moveToNext()){
+            count=countdistinciItems(cursor.getString(1),cursor.getInt(2));
+            oid=cursor.getString(0);
+            item=cursor.getString(1);
+            price=cursor.getInt(2);
+            variant=cursor.getString(3);
+            cv.put(order_id,oid);
+            cv.put(itemname,item);
+            cv.put(itemprice,price);
+            cv.put(itemvariant,variant);
+            cv.put(iteminventory,count);
+            db1.insert(orderitemdistincttable,null,cv);
+        }
+    }
+
+    public int countdistinciItems(String item,int price){
+        SQLiteDatabase db=this.getReadableDatabase();
+        int s;
+        Cursor cursor=db.rawQuery("select count(Item) from ordereditems where item='"+item+"' and price='"+price+"'",null);
+        if(cursor.moveToFirst()){
+            s=cursor.getInt(0);
+        }
+        else{
+            s=0;
         }
         return s;
     }

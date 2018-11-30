@@ -19,18 +19,18 @@
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="35dp"
         android:text="@string/textview"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/add"
-        android:layout_width="110dp"
+        android:layout_width="100dp"
         android:layout_height="42dp"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="3dp"
         android:background="@drawable/cartbtnlayout"
         android:text="@string/add_to_cart"
         android:textColor="#ffffff" />
@@ -39,20 +39,42 @@
         android:id="@+id/variant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/itemname"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="155dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="39dp"
         android:text="@string/variant" />
 
     <TextView
         android:id="@+id/inventory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/variant"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="-31dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="13dp"
         android:text="@string/inventory" />
+
+    <EditText
+        android:id="@+id/quantity"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/add"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="140dp"
+        android:textSize="15sp"
+        android:ems="10"
+        android:background="@drawable/quantitybackground"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:inputType="textPersonName"
+        android:text="1" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/add"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="179dp"
+        android:textSize="13sp"
+        android:text="Set Quantity" />
 
 </RelativeLayout>

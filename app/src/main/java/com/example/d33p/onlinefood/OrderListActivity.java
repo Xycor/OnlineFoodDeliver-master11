@@ -35,11 +35,17 @@ public class OrderListActivity extends AppCompatActivity {
         //delivery.setText(deliver);
         toolbar.setTitle("Order: "+orderid);
         toolbar.setSubtitle(deliver);
+
+        /////////old stuff//////////////////
         arrayList=new ArrayList<>();
         arrayList=mydb.getItemsinOrder(orderid);
         lv=findViewById(R.id.listview);
         adapter=new ItemsinOrderAdapter(this,arrayList);
         lv.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+        /////////new Stuff//////////////////
+        //arrayList=new ArrayList<>();
+        //arrayList=mydb.checkdistinctitems(orderid);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.d33p.onlinefood.order;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import com.example.d33p.onlinefood.R;
 import com.example.d33p.onlinefood.DB.SqliteDB;
 import com.example.d33p.onlinefood.cart.Cartitems;
+import com.example.d33p.onlinefood.items.ItemsList;
 
 import java.util.ArrayList;
 
@@ -18,6 +20,13 @@ public class Placed_orders extends AppCompatActivity {
     TextView amount;
     SqliteDB mydb;
     ArrayList<Orderitems> arrayList;
+
+    @Override
+    public void onBackPressed() {
+        Intent i=new Intent(this,ItemsList.class);
+        startActivity(i);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,5 +43,6 @@ public class Placed_orders extends AppCompatActivity {
         listAdapter=new OrderAdapter(this,arrayList);
         listview.setAdapter(listAdapter);
         listAdapter.notifyDataSetChanged();
+
     }
 }

@@ -16,7 +16,7 @@ public class ItemsinOrderAdapter extends BaseAdapter {
     Context mContext;
     //String item,price,variant;
     String orderid;
-    TextView track,item,price,variant;
+    TextView track,item,price,variant,inventory;
     ArrayList<Orderitems> arrayList;
 
     public ItemsinOrderAdapter(Context context, ArrayList<Orderitems> arrayList) {
@@ -46,8 +46,9 @@ public class ItemsinOrderAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
             convertView=inflater.inflate(R.layout.order_list_item_contents,null);
             //track=convertView.findViewById(R.id.track);
-            price=convertView.findViewById(R.id.price);
             variant=convertView.findViewById(R.id.variant);
+            price=convertView.findViewById(R.id.price);
+            inventory=convertView.findViewById(R.id.inventory);
             item=convertView.findViewById(R.id.item);
         }
         else{
@@ -55,6 +56,7 @@ public class ItemsinOrderAdapter extends BaseAdapter {
         }
         item.setText(arrayList.get(position).getItem());
         price.setText("Rs. "+arrayList.get(position).getPrice());
+        inventory.setText(arrayList.get(position).getInventory()+" Items");
         variant.setText(arrayList.get(position).getVariant());
         return convertView;
     }

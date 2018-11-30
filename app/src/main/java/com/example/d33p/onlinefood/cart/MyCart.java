@@ -98,6 +98,7 @@ public class MyCart extends AppCompatActivity {
                 timeorder=timeoforder.format(c.getTime());
                 mydb.insertorders(ordertrack,d,timeorder);
                 mydb.insdelcart();
+                mydb.checkdistinctitems(ordertrack);
                 listview.setVisibility(v.INVISIBLE);
                 Snackbar.make(v,"Order Placed",Snackbar.LENGTH_LONG)
                         .setActionTextColor(Color.GREEN)

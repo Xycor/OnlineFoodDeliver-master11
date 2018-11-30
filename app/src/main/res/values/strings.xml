@@ -27,4 +27,5 @@
     <string name="textview1">TextView</string>
     <string name="timeoforder">timeoforder</string>
     <string name="go"> > </string>
+    <string name="quantity">quantity</string>
 </resources>

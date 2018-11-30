@@ -45,6 +45,7 @@ public class SqliteCustomAdapter extends BaseAdapter {
     StringBuilder sb=new StringBuilder();
     SimpleDateFormat df;
     private String track1;
+    TextView quantity;
 
     public String getTrack1() {
         return track1;
@@ -91,6 +92,7 @@ public class SqliteCustomAdapter extends BaseAdapter {
             customviewholder.variant = convertView.findViewById(R.id.variant);
             customviewholder.btn=convertView.findViewById(R.id.add);
             customviewholder.inventory=convertView.findViewById(R.id.inventory);
+            quantity=convertView.findViewById(R.id.quantity);
 
             df=new SimpleDateFormat("HH");
             customviewholder.btn.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +115,7 @@ public class SqliteCustomAdapter extends BaseAdapter {
                     }
                     ivariant=arraylist.get(position).getVariant();
                     iinventory=arraylist.get(position).getInventory();
-                    i=1;
+                    i=Integer.parseInt(quantity.getText().toString());
                     mydb.operateinventory(arraylist.get(position).getId(),i);
                     mydb.insertcart(iitem,ivariant,iprice,itrack);
                     Toast.makeText(mContext,"Added to Cart "+iitem,Toast.LENGTH_LONG).show();

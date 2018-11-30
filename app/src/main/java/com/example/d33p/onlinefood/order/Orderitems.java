@@ -31,21 +31,22 @@ public class Orderitems {
         this.track=track;
         this.deliver=deliver;
     }*/
-    public Orderitems(String id,String item, String variant, String price, String track, String deliver) {
+    /*public Orderitems(String id,String item, String variant, String price, String track, String deliver) {
         this.id = id;
         this.item = item;
         this.variant = variant;
         this.price = price;
         this.track=track;
         this.deliver=deliver;
-    }
+    }*/
 
-    public Orderitems(String item, String price,String variant) {
+    public Orderitems(String item, String price,String inventory,String variant,String abc,String cde) {
 
         //this.id = id;
         this.item = item;
         this.price = price;
-        this.variant = variant;
+        this.inventory = inventory;
+        this.variant=variant;
         //this.track=track;
         //this.deliver=deliver;
     }
