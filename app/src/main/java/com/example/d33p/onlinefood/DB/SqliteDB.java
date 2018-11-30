@@ -103,7 +103,7 @@ public class SqliteDB extends SQLiteOpenHelper {
     public ArrayList<Orderitems> gettoorder(){
         ArrayList<Orderitems> arrayList=new ArrayList<>();
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery("SELECT * FROM "+orderidtable,null);
+        Cursor cursor=db.rawQuery("SELECT * FROM "+orderidtable+" order by order_id desc",null);
         while(cursor.moveToNext()){
             String orderid=cursor.getString(0);
             String noitems=cursor.getString(1);
@@ -255,10 +255,10 @@ public class SqliteDB extends SQLiteOpenHelper {
             String idd=cursor.getString(0);
             String name=cursor.getString(1);
             String variant=cursor.getString(2);
-            int inventory=cursor.getInt(3);
+            int invent=cursor.getInt(3);
             int price=cursor.getInt(4);
             int pricec=cursor.getInt(5);
-            FoodItemsList items=new FoodItemsList(idd,name,variant,inventory,price,pricec);
+            FoodItemsList items=new FoodItemsList(idd,name,variant,invent,price,pricec);
 
             arrayList.add(items);
         }
@@ -278,8 +278,18 @@ public class SqliteDB extends SQLiteOpenHelper {
         }
         db.execSQL("update oninventory set inventory="+(s-i)+" where Id='"+id+"'");
     }
-
-
+    public String checkcart(){
+        SQLiteDatabase db=this.getReadableDatabase();
+        String s;
+        Cursor cursor=db.rawQuery("select count(Item) from "+carttable,null);
+        if(cursor.moveToFirst()) {
+            s = cursor.getString(0);
+        }
+        else{
+            s="0";
+        }
+        return s;
+    }
     /*public void delete(String track){
         SQLiteDatabase db=this.getReadableDatabase();
         db.delete(carttable,"track = ?",new String[] {track});

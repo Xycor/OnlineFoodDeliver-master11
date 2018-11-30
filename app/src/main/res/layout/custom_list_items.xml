@@ -31,7 +31,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="#ef851b"
+        android:background="@drawable/cartbtnlayout"
         android:text="@string/add_to_cart"
         android:textColor="#ffffff" />
 

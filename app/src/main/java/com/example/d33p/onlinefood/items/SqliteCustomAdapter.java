@@ -35,7 +35,7 @@ public class SqliteCustomAdapter extends BaseAdapter {
     public int iprice;
     public String itrack;
     public String track;
-    public int timeint,i=0;
+    public int timeint,i;
     public SqliteDB mydb;
 
     ArrayList<FoodItemsList> arraylist = new ArrayList<>();
@@ -113,7 +113,7 @@ public class SqliteCustomAdapter extends BaseAdapter {
                     }
                     ivariant=arraylist.get(position).getVariant();
                     iinventory=arraylist.get(position).getInventory();
-                    i=i+1;
+                    i=1;
                     mydb.operateinventory(arraylist.get(position).getId(),i);
                     mydb.insertcart(iitem,ivariant,iprice,itrack);
                     Toast.makeText(mContext,"Added to Cart "+iitem,Toast.LENGTH_LONG).show();

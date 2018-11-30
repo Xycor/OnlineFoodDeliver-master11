@@ -1,6 +1,8 @@
 package com.example.d33p.onlinefood.items;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +29,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ItemsList extends AppCompatActivity {
 
+
+    SwipeRefreshLayout refresh;
+
     public SqliteDB mydb;
     public ListView listview;
     //public CustomList listAdapter;
@@ -37,6 +42,10 @@ public class ItemsList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.items_list);
+
+        refresh=findViewById(R.id.refresh);
+
+        refresh.setColorSchemeResources(R.color.colorPrimary,R.color.colorAccent,R.color.colorPrimaryDark);
 
         mydb=new SqliteDB(this);
 
@@ -97,6 +106,21 @@ public class ItemsList extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refresh.setRefreshing(true);
+                (new Handler()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        refresh.setRefreshing(false);
+                        show();
+                    }
+                },3000);
+            }
+        });
+
     }
     public void show(){
         listview=findViewById(R.id.listview);

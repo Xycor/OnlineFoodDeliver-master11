@@ -56,7 +56,7 @@ public class OrderAdapter extends BaseAdapter {
             deliver=convertView.findViewById(R.id.delivery);
             order=convertView.findViewById(R.id.orderid);
             totalitems=convertView.findViewById(R.id.totalitems);
-            order.setOnClickListener(new View.OnClickListener() {
+            convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i=new Intent(mContext,OrderListActivity.class);

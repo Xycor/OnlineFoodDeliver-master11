@@ -2,6 +2,7 @@ package com.example.d33p.onlinefood.cart;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,10 +38,11 @@ public class MyCart extends AppCompatActivity {
     SharedPreferences sp1,sp;
     Call<List<Retro>> call;
     ArrayList<Cartitems> arrayList;
-    TextView total;
+    TextView total,empty;
     Button place;
     CheckBox check;
     String d,ordertrack,timeorder;
+    int a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +51,26 @@ public class MyCart extends AppCompatActivity {
         total=findViewById(R.id.total);
         place=findViewById(R.id.place);
         check=findViewById(R.id.cod);
+        empty=findViewById(R.id.emptycart);
+        empty.setVisibility(View.INVISIBLE);
 
         mydb=new SqliteDB(this);
+        a=Integer.parseInt(mydb.checkcart());
+        System.out.println("/////////////////////////////////////////////////////////////"+a);
+
+        if(a==0){
+            place.setVisibility(View.INVISIBLE);
+            total.setVisibility(View.INVISIBLE);
+            check.setVisibility(View.INVISIBLE);
+            empty.setVisibility(View.VISIBLE);
+        }
+        else if(a>0){
+            place.setVisibility(View.VISIBLE);
+            total.setVisibility(View.VISIBLE);
+            check.setVisibility(View.VISIBLE);
+            empty.setVisibility(View.INVISIBLE);
+        }
+
         String tot=mydb.getTotalofItems();
 
         total.setText("Total: Rs."+tot+" to pay");
@@ -78,7 +98,20 @@ public class MyCart extends AppCompatActivity {
                 timeorder=timeoforder.format(c.getTime());
                 mydb.insertorders(ordertrack,d,timeorder);
                 mydb.insdelcart();
-                Snackbar.make(v,"Order Placed",Snackbar.LENGTH_LONG).show();
+                listview.setVisibility(v.INVISIBLE);
+                Snackbar.make(v,"Order Placed",Snackbar.LENGTH_LONG)
+                        .setActionTextColor(Color.GREEN)
+                    .setAction("Proceed To My Orders", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent i=new Intent(MyCart.this,Placed_orders.class);
+                            startActivity(i);
+                        }
+                }).show();
+                place.setVisibility(v.INVISIBLE);
+                total.setVisibility(v.INVISIBLE);
+                check.setVisibility(v.INVISIBLE);
+                empty.setVisibility(v.VISIBLE);
             }
         });
 

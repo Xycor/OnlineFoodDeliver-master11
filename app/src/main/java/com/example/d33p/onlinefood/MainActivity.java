@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         user=findViewById(R.id.user);
         pwd=findViewById(R.id.password);
+
     }
     public void various(View view){
         String userS=user.getText().toString();

@@ -64,7 +64,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="180dp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/btnlayout"
             android:onClick="various"
             android:text="@string/button"
             android:textColor="#fff" />
