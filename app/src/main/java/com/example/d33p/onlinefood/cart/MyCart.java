@@ -23,6 +23,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
@@ -43,6 +49,12 @@ public class MyCart extends AppCompatActivity {
     CheckBox check;
     String d,ordertrack,timeorder;
     int a;
+    String sss="Order placed";
+    private View view;
+
+    private Observable<String> observable;
+    private Observer<String> observer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +65,7 @@ public class MyCart extends AppCompatActivity {
         check=findViewById(R.id.cod);
         empty=findViewById(R.id.emptycart);
         empty.setVisibility(View.INVISIBLE);
+
 
         mydb=new SqliteDB(this);
         a=Integer.parseInt(mydb.checkcart());
@@ -82,10 +95,63 @@ public class MyCart extends AppCompatActivity {
         listview.setAdapter(listAdapter);
         listAdapter.notifyDataSetChanged();
 
+
+        observable=Observable.just(sss).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        observer=new Observer<String>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+                if(check.isChecked()){
+                    d="Deliver by Tomorrow";
+                }
+                else{
+                    d="Delivery will be notified";
+                }
+                Calendar c=Calendar.getInstance();
+                SimpleDateFormat forTrack=new SimpleDateFormat("yyMMddHHmmss");
+                SimpleDateFormat timeoforder=new SimpleDateFormat("EEE,MMM d,''yy, h:mm a");
+                ordertrack=forTrack.format(c.getTime());
+                timeorder=timeoforder.format(c.getTime());
+                mydb.insertorders(ordertrack,d,timeorder);
+                mydb.insdelcart();
+                mydb.checkdistinctitems(ordertrack);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                System.out.println("Error "+e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                listview.setVisibility(view.INVISIBLE);
+                Snackbar.make(view,"Order Placed",Snackbar.LENGTH_LONG)
+                        .setActionTextColor(Color.GREEN)
+                        .setAction("Proceed To My Orders", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent i=new Intent(MyCart.this,Placed_orders.class);
+                                startActivity(i);
+                            }
+                        }).show();
+                place.setVisibility(view.INVISIBLE);
+                total.setVisibility(view.INVISIBLE);
+                check.setVisibility(view.INVISIBLE);
+                empty.setVisibility(view.VISIBLE);
+                System.out.println("Successfully completed");
+            }
+        };
+
         place.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(check.isChecked()){
+                view=v;
+                observable.subscribe(observer);
+                /*if(check.isChecked()){
                     d="Deliver by Tomorrow";
                 }
                 else{
@@ -112,7 +178,7 @@ public class MyCart extends AppCompatActivity {
                 place.setVisibility(v.INVISIBLE);
                 total.setVisibility(v.INVISIBLE);
                 check.setVisibility(v.INVISIBLE);
-                empty.setVisibility(v.VISIBLE);
+                empty.setVisibility(v.VISIBLE);*/
             }
         });
 

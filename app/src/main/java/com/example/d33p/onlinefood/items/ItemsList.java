@@ -21,6 +21,14 @@ import com.example.d33p.onlinefood.order.Placed_orders;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,13 +39,16 @@ public class ItemsList extends AppCompatActivity {
 
 
     SwipeRefreshLayout refresh;
-
+    ForApi api;
     public SqliteDB mydb;
     public ListView listview;
     //public CustomList listAdapter;
     public SqliteCustomAdapter listAdapter1;
     ArrayList<FoodItemsList> arrayList;
+    Observer observer;
+    Observable mObservable;
     int a;
+    CompositeDisposable compositeDisposable=new CompositeDisposable();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +68,8 @@ public class ItemsList extends AppCompatActivity {
         //listview.setAdapter(listAdapter);
 
         Retrofit retro=new Retrofit.Builder().baseUrl(ForApi.URL).addConverterFactory(GsonConverterFactory.create()).build();
-        ForApi api=retro.create(ForApi.class);
+        api=retro.create(ForApi.class);
+        //fetchdata();
         Call<List<Retro>> call =api.getItems();//Callback<List<Retro>>() {
         call.enqueue(new Callback<List<Retro>>() {
             @Override
@@ -82,6 +94,11 @@ public class ItemsList extends AppCompatActivity {
                                 Integer.parseInt(foods.get(i).getPrice()),
                                 Integer.parseInt(foods.get(i).getPriceC()));
                     }
+                    /*mObservable.just(foods)
+                            .observeOn(Schedulers.io())
+                            .subscribeOn(AndroidSchedulers.mainThread())
+                            .subscribe(observer);
+                    */
                 }
                 show();
             }
@@ -122,6 +139,29 @@ public class ItemsList extends AppCompatActivity {
         });
 
     }
+
+    /*private void fetchdata() {
+        compositeDisposable.add((Disposable) api.getItems()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Consumer<List<FoodItemsList>>() {
+                @Override
+                public void accept(List<FoodItemsList> retros) throws Exception {
+                    displaydata(retros);
+                }
+            }));
+    }
+
+    /*private void displaydata(List<Retro> retros){
+        listAdapter1=new SqliteCustomAdapter(this,retros);
+    }
+
+    /*@Override
+    protected void onStop() {
+        compositeDisposable.clear();
+        super.onStop();
+    }*/
+
     public void show(){
         listview=findViewById(R.id.listview);
         arrayList=new ArrayList<>();
